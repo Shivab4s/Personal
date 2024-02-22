@@ -1,2 +1,2 @@
-# Personal
+# Customer RFM Summary
 https://app.powerbi.com/view?r=eyJrIjoiZTE3ZmEzMWItOGRiMi00ZWY2LWE4Y2MtYTg3YmE1NTUyMGIwIiwidCI6IjM2MTkwYzNjLTU2NmEtNDExNy05YWY0LWFhN2I4MjE0NmI0OCJ9
