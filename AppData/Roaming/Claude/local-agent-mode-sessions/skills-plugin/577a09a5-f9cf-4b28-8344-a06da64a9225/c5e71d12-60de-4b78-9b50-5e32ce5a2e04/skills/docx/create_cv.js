@@ -38,7 +38,7 @@ const spacer = (h = 80) => new Paragraph({ spacing: sp(h, 0), children: [new Tex
 // ── Sidebar helpers ───────────────────────────────────────────────────────────
 function sbHead(text) {
   return new Paragraph({
-    spacing: sp(180, 50),
+    spacing: sp(220, 60),
     border: { bottom: sideLine },
     children: [new TextRun({
       text: text.toUpperCase(), bold: true, size: 18,
@@ -49,13 +49,13 @@ function sbHead(text) {
 function sbBullet(text, color = SIDEBAR_TXT) {
   return new Paragraph({
     numbering: { reference: "sbul", level: 0 },
-    spacing: sp(26, 26),
+    spacing: { before: 44, after: 44, line: 260, lineRule: "auto" },
     children: [new TextRun({ text, size: 16, color, font: F })]
   });
 }
 function sbPara(text, bold = false, color = SIDEBAR_TXT, size = 16) {
   return new Paragraph({
-    spacing: sp(18, 18),
+    spacing: { before: 30, after: 30, line: 256, lineRule: "auto" },
     children: [new TextRun({ text, bold, size, color, font: F })]
   });
 }
@@ -95,20 +95,20 @@ function company(name, role, date) {
     new Paragraph({ spacing: sp(0, 20), children: [
       new TextRun({ text: role, bold: true, size: 20, color: BODY, font: F })
     ]}),
-    new Paragraph({ spacing: sp(40, 10), children: [
+    new Paragraph({ spacing: sp(60, 20), children: [
       new TextRun({
         text: "RESPONSIBILITIES", size: 16, color: SUBTLE, font: F,
         underline: { type: UnderlineType.SINGLE }
       })
     ]}),
-    spacer(10),
+    spacer(20),
   ];
 }
 
 function bullet(text, ai = false) {
   return new Paragraph({
     numbering: { reference: "mbul", level: 0 },
-    spacing: sp(36, 36),
+    spacing: { before: 72, after: 48, line: 268, lineRule: "auto" },
     children: [
       ...(ai ? [new TextRun({ text: "★ ", bold: true, size: 19, color: AI_GREEN, font: F })] : []),
       new TextRun({ text, size: 19, color: ai ? AI_GREEN : BODY, bold: ai, font: F })
@@ -118,15 +118,15 @@ function bullet(text, ai = false) {
 
 function project(title, desc) {
   return [
-    spacer(60),
-    new Paragraph({ spacing: sp(0, 20), children: [
+    spacer(80),
+    new Paragraph({ spacing: sp(0, 28), children: [
       new TextRun({ text: "PROJECT HANDLED", size: 16, color: SUBTLE, font: F,
         underline: { type: UnderlineType.SINGLE } })
     ]}),
-    new Paragraph({ spacing: sp(10, 20), children: [
+    new Paragraph({ spacing: sp(10, 28), children: [
       new TextRun({ text: title, bold: true, size: 19, color: BODY, font: F })
     ]}),
-    new Paragraph({ spacing: sp(0, 20), children: [
+    new Paragraph({ spacing: { before: 0, after: 28, line: 272, lineRule: "auto" }, children: [
       new TextRun({ text: desc, size: 17, color: SUBTLE, font: F })
     ]}),
   ];
@@ -352,8 +352,9 @@ const sidebar = [
 
   sbHead("Core Competencies"),
   spacer(30),
-  ...["Data Engineering", "Data Strategy & Design", "Business Analysis",
-      "Automation", "Data Modelling", "Agile & Delivery Management",
+  ...["Commercial & Market Analytics", "Forecasting & Scenario Planning",
+      "Distributor Channel Analytics", "KPI Design & Reporting",
+      "Data Strategy & Modelling", "Business Partnering",
       "Process Improvement", "Stakeholder Management"
   ].map(s => sbBullet(s)),
 
@@ -396,7 +397,7 @@ const main = [
     spacing: sp(0, 80),
     border: { bottom: { style: BorderStyle.SINGLE, size: 8, color: TEAL, space: 4 } },
     children: [new TextRun({
-      text: "LEAD DATA & BI ANALYST  |  AI AGENT DEVELOPMENT  •  SQL  •  PYTHON  •  AZURE | ON-PREM | AWS | GCP  •  POWER BI  |  RETAIL ANALYTICS",
+      text: "BUSINESS INTELLIGENCE ANALYST  |  FORECASTING & MARKET ANALYTICS  •  POWER BI  •  SQL  •  PYTHON  •  MEA REGION  |  COMMERCIAL  |  SUPPLY CHAIN",
       size: 15, color: SUBTLE, font: F, characterSpacing: 5
     })]
   }),
@@ -405,56 +406,63 @@ const main = [
   // ── Profile ────────────────────────────────────────────────────────────────
   section("Profile"),
   spacer(40),
-  new Paragraph({ spacing: sp(0, 80), alignment: AlignmentType.JUSTIFIED, children: [
-    new TextRun({ text: "Experienced and detail-oriented Lead Data & BI Analyst with ", size: 19, font: F, color: BODY }),
+  new Paragraph({ spacing: { before: 0, after: 80, line: 288, lineRule: "auto" }, alignment: AlignmentType.JUSTIFIED, children: [
+    new TextRun({ text: "Results-driven Business Intelligence Analyst with ", size: 19, font: F, color: BODY }),
     new TextRun({ text: "10+ years", bold: true, size: 19, font: F, color: BODY }),
-    new TextRun({ text: " Specializing in Business Intelligence (BI) and Data Warehousing, with comprehensive knowledge across Retail, ", size: 19, font: F, color: BODY }),
-    new TextRun({ text: "Supply Chain, E-Commerce, HR, Finance, and Logistics", bold: true, size: 19, font: F, color: BODY }),
-    new TextRun({ text: ". Recently expanded expertise into ", size: 19, font: F, color: BODY }),
-    new TextRun({ text: "AI Agent Development", bold: true, size: 19, font: F, color: AI_GREEN }),
-    new TextRun({ text: " — building intelligent, automated workflows using Large Language Models (LLMs), agentic pipelines, and tools such as Claude API, LangChain, and AutoGen to automate complex BI tasks end-to-end. Proficient in ", size: 19, font: F, color: BODY }),
-    new TextRun({ text: "Data Architecture, BI & Insights, Data Integration, Data Warehousing, and Data Analysis", bold: true, size: 19, font: F, color: BODY }),
-    new TextRun({ text: ", with a meticulous approach to process improvement. Demonstrates strong leadership, exceptional communication, and a track record of delivering results in complex project environments.", size: 19, font: F, color: BODY }),
+    new TextRun({ text: " of experience delivering end-to-end BI and analytical solutions across ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "Commercial, Supply Chain, Finance, E-Commerce, and Retail", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: " functions in the ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "MEA region", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: ". Proven expertise in designing ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "Power BI dashboards", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: ", building automated data pipelines, and translating complex datasets into ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "actionable insights that drive commercial decision-making", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: ". Deep experience in ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "forecasting & scenario planning, distributor and channel performance analytics", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: ", and KPI framework development aligned to executive and operational stakeholders. Adept at business partnering across commercial, finance, and supply chain functions with a strong track record of delivering scalable BI solutions that support ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "market intelligence and performance management", bold: true, size: 19, font: F, color: BODY }),
+    new TextRun({ text: ". Augmented with ", size: 19, font: F, color: BODY }),
+    new TextRun({ text: "AI-driven automation", bold: true, size: 19, font: F, color: AI_GREEN }),
+    new TextRun({ text: " capabilities (Claude API, LangChain, Python TOM) to enable faster, more intelligent BI delivery.", size: 19, font: F, color: BODY }),
   ]}),
 
   // ── Work Experience ────────────────────────────────────────────────────────
   section("Work Experience | Roles & Responsibilities"),
-  spacer(60),
+  spacer(100),
 
   // Landmark Group – Current
   ...company("Landmark Group (United Arab Emirates)", "Lead – Data & BI Specialist", "MAR 2025 – PRESENT"),
-  bullet("Lead enterprise-wide analytical initiatives to drive data-driven decision-making across Planning, Logistic, E-commerce, and Supply Chain Finance & HR functions."),
-  bullet("Coordinate with business stakeholders to understand complex problem statements and translate them into scalable analytical and BI solutions."),
-  bullet("Own the design and delivery of interactive dashboards and advanced analytical tools (e.g., Markdown Recommendation, Discount Optimization, Automated Recommendations) enabling CXO leadership to track performance across regions, categories, and channels."),
-  bullet("Leverage Python and advanced analytics techniques to uncover insights, generate recommendations, and define next-best actions for business teams."),
-  bullet("Implement and manage Microsoft Fabric analytics solutions, including Lakehouse, Dataflows, Notebooks, and Pipelines, to support scalable enterprise analytics workloads."),
-  bullet("Utilize OneLake as the centralized enterprise data repository, enabling unified data access, efficient data ingestion, and cross-domain analytics across business functions."),
-  bullet("Ensure strong data governance practice, including data lineage, documentation, and metric standardization along with the Insights, to support scalable and auditable BI solutions."),
+  bullet("Lead periodic forecasting processes to analyse expected performance against quarterly and seasonal targets, identifying risks and opportunities to support commercial execution and strategic planning across MEA."),
+  bullet("Drive distributor and wholesale channel analytics — tracking sell-through performance, stock coverage, order fulfilment, and replenishment cycles — enabling data-driven commercial and inventory decisions."),
+  bullet("Own the design and delivery of interactive Power BI dashboards enabling CXO and commercial leadership to monitor KPIs across regions, categories, and channels, with automated data pipelines for always-on reporting."),
+  bullet("Define and maintain KPI frameworks and reusable data assets that transform raw commercial, supply chain, and finance data into actionable insights for senior stakeholders."),
+  bullet("Partner with commercial, finance, and supply chain functions to frame business hypotheses, design analytical models, and deliver scenario planning tools that support executive decision-making."),
+  bullet("Leverage Python and advanced analytics techniques to develop market intelligence, competitor benchmarking, and baseline analyses supporting forecasting and pricing strategies."),
+  bullet("Implement and manage Microsoft Fabric analytics solutions including Lakehouse, Dataflows, Notebooks, and Pipelines, ensuring optimised compute, storage, and refresh performance."),
   bullet("Build and deploy AI agent workflows using Claude API and LangChain to automate end-to-end BI tasks — including automated DAX measure creation, Power BI model updates via TOM/TMSL, and intelligent data transformation pipelines.", true),
-  bullet("Utilise Claude Code (AI CLI) to automate Power BI model scripting, DAX generation, and data pipeline configuration, enabling faster iteration and delivery of analytics solutions.", true),
-  bullet("Apply prompt engineering techniques to design reusable agentic pipelines that interface with Tabular Object Model (TOM) and Analysis Services for automated report development.", true),
+  bullet("Utilise Claude Code (AI CLI) to automate Power BI model scripting, DAX generation, and pipeline configuration, reducing delivery time and enabling rapid iteration on analytical solutions.", true),
   ...project(
-    "Sell thru Optimizations | Season Performance | Capacity Optimization | NB Sellthru Tracker",
-    "Developed a Data & BI Analytical inhouse tool to optimize and recommend Markdown and pricing strategies. Built AI-assisted Power BI dashboards with automated measure creation, currency conversion logic, image integration, and dynamic Top/Bottom seller analysis. Technologies: SQL, PL/SQL, Python, Power BI, Claude API, LangChain, Azure, AWS Redshift."
+    "Sell-Through Optimisation | Season & Channel Performance | Capacity Planning | NB Sellthru Tracker",
+    "Developed an in-house BI analytical platform to monitor sell-through, forecast performance against seasonal targets, and recommend Markdown and pricing strategies across WHS, Own DTC, and Franchise channels. Built Power BI dashboards with automated pipelines, distributor channel analytics, KPI scorecards, and dynamic Top/Bottom seller analysis. Technologies: SQL, Python, Power BI, Claude API, LangChain, Azure, AWS Redshift."
   ),
 
   // ── Tools bar (matches page-1 logo row from original PDF) ─────────────────
   ...toolsBar(),
 
-  spacer(80),
+  spacer(140),
 
   // GMG
   ...company("GMG (United Arab Emirates)", "Data Engineer", "FEB 2024 – MAR 2025"),
-  bullet("Led 5+ E2E analytical Data and BI Solution delivery includes design Storytelling, Self-service Capability, creating business-driven wireframes, standardization, and adoption across analytics applications."),
-  bullet("Develop Fabric Notebooks using PySpark and Python to perform advanced data transformations, feature engineering, and large-scale data processing."),
-  bullet("Developed Automated Analytical model for the Data Analysis – Margin Variation | Sales Growth and Stock Analysis."),
-  bullet("Performed root-cause analysis, troubleshooting, and debugging across data pipelines and BI applications to ensure compliance with data quality, performance, and governance standards."),
-  bullet("Led user acceptance testing (UAT) and production deployments, utilizing Azure DevOps pipelines, GitHub, and Power BI deployment pipelines, ensuring controlled releases and version governance."),
-  bullet("Built secure, scalable dashboards and analytical visualizations, implementing row-level and column-level security across Tableau and Power BI to support multi-region and role-based access requirements."),
+  bullet("Delivered 5+ end-to-end BI analytical solutions — including market channel performance, sales growth analysis, and margin variation — translating business requirements into self-service dashboards and automated reports."),
+  bullet("Developed market and competitor analytics models to support commercial teams with pricing insights, trend analysis, and campaign effectiveness measurement across multiple brand portfolios."),
+  bullet("Built KPI monitoring frameworks and real-time dashboards in Power BI and Tableau, enabling commercial and marketing stakeholders to track performance and act on emerging risks and opportunities."),
+  bullet("Developed automated analytical models for Margin Variation, Sales Growth, and Stock Analysis using PySpark and Python, reducing manual reporting effort and improving decision cycle time."),
+  bullet("Led UAT and production deployments using Azure DevOps and Power BI deployment pipelines, ensuring controlled, governed releases across analytics environments."),
+  bullet("Built secure, scalable dashboards with row-level and column-level security across Tableau and Power BI to support multi-region and role-based access requirements."),
   bullet("Integrated AI-assisted automation into BI development workflows, leveraging Python-based agentic scripting to accelerate dashboard and pipeline delivery.", true),
   ...project(
-    "Marketing Channel Performance | Merch Check Report | GA4 Dashboards – Ecom | E-Receipt Tracker",
-    "Developed a Data & BI Analytics for GMG's brand portfolio (Nike, Jordan, Timberland, Under Armour, SSS, and Drop Kick) to aggregate and analyze data from multiple marketing channels. Implemented real-time KPI monitoring and trend analysis to optimize campaign effectiveness. Technologies: SQL, PL/SQL, Python, Power BI, Tableau, and AWS Redshift."
+    "Marketing Channel Performance | Merch Analytics | GA4 E-Commerce Dashboards | E-Receipt Tracker",
+    "Built BI analytics for GMG's brand portfolio (Nike, Jordan, Timberland, Under Armour) to aggregate multi-channel data, monitor KPIs in real time, and support forecasting and scenario planning for commercial teams. Delivered market intelligence and competitor benchmarking dashboards. Technologies: SQL, Python, Power BI, Tableau, AWS Redshift."
   ),
 
   spacer(80),
@@ -559,7 +567,7 @@ const doc = new Document({
 });
 
 Packer.toBuffer(doc).then(buffer => {
-  const out = "C:\\Users\\searc\\Downloads\\Shivananda_Subbanna_CV_v3.docx";
+  const out = "C:\\Users\\searc\\Downloads\\Shivananda_Subbanna_CV_v4_JnJ.docx";
   fs.writeFileSync(out, buffer);
   console.log("Done:", out);
 });
